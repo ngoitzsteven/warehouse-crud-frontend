@@ -1,4 +1,30 @@
 <div>
+    <div id = "navbar">
+        <span>
+           <p-splitButton label="Warehouses" [model]="wItems"></p-splitButton>
+        </span> 
+        <span>
+           <p-splitButton label="Product" [model]="pItems"></p-splitButton>
+        </span> 
+   </div>
+</div>
+    <label for="warehouseId">Warehouse ID</label>
+    <input type="number" pInputNumber [(ngModel)]="warehouseFormData.warehouseId" placeholder="" id="warehouseId">
+    <input type = "text" pInputText [(ngModel)]="warehouseFormData.warehouseName" placeholder="Warehouse Name">
+    <input type = "text" pInputText [(ngModel)]="warehouseFormData.location" placeholder="Location">
+    <label for="Capacity Max">Capacity Max </label>
+    <input type="number" pInputText [(ngModel)]="warehouseFormData.capacityMax" id="Capacity Max">
+    <label for="warehouseId">Capacity Current</label>
+    <input type="number" pInputText [(ngModel)]="warehouseFormData.capacityCurrent" id="Capacity Current">
+    <label for="warehouseId">Supply</label>
+    <input type="number" pInputText [(ngModel)]="warehouseFormData.supply" id="Supply">
+    <label for="warehouseId">Product ID</label>
+    <input type="number" pInputText [(ngModel)]="warehouseFormData.product_id" id="Product ID">
+<div>
+
+</div>
+
+<div>
     
     <p-table [value]="warehouses" >
         <ng-template pTemplate="header">
@@ -8,8 +34,8 @@
                 <th>Location</th>
                 <th>Capacity</th>
                 <th>Current</th>
-                <!-- <th>Supply</th>
-                <th>Product ID</th> -->
+                <th>Supply</th>
+                <th>Product ID</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-warehouse>
@@ -19,8 +45,8 @@
                 <td>{{warehouse.location}}</td>
                 <td>{{warehouse.capacityMax}}</td>
                 <td>{{warehouse.capacityCurrent}}</td>
-                <!-- <td>{{warehouse.supply}}</td>
-                <td>{{warehouse.product_id}}</td> -->
+                <td>{{warehouse.supply}}</td>
+                <td>{{warehouse.product_id}}</td>
                 <!-- <td><p-inputNumber value = "number" mode = "decimal" [(ngModel)] = "warehouse.warehouseId"></p-inputNumber></td>
                 <td><p-inputText [(ngModel)] = "warehouse.warehouseName"></p-inputText></td>
                 <td><p-inputText [(ngModel)] = "warehouse.location"></p-inputText></td>

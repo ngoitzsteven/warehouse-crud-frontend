@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
       {label: 'Add', icon:'pi pi-plus' , command: () =>{
         this.addProduct();
       } },
+      
       {label: 'Delete', icon:'pi pi-minus-circle' , command: () =>{
         this.deleteProduct(this.product.id);
       } }
