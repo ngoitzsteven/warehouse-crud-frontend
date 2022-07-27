@@ -1,0 +1,10 @@
+#navbar{
+    display: flex;
+    justify-content: center ;
+    border: 5px 5px 5px 5px ;
+    
+}
+
+span{
+    padding: 20px 20px 10px 20px;
+}
