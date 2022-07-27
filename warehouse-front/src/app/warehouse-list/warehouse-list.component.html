@@ -3,13 +3,13 @@
     <p-table [value]="warehouses" >
         <ng-template pTemplate="header">
             <tr>
-                <th>warehouseId</th> 
-                <th>warehouseName</th> 
-                <th>location</th>
-                <th>capacityMax</th>
-                <th>capacityCurrent</th>
-                <th>supply</th>
-                <th>product_id</th>
+                <th>Warehouse Id</th> 
+                <th>Warehouse Name</th> 
+                <th>Location</th>
+                <th>Capacity</th>
+                <th>Current</th>
+                <!-- <th>Supply</th>
+                <th>Product ID</th> -->
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-warehouse>
@@ -19,16 +19,16 @@
                 <td>{{warehouse.location}}</td>
                 <td>{{warehouse.capacityMax}}</td>
                 <td>{{warehouse.capacityCurrent}}</td>
-                <td>{{warehouse.supply}}</td>
-                <td>{{warehouse.product_id}}</td>
+                <!-- <td>{{warehouse.supply}}</td>
+                <td>{{warehouse.product_id}}</td> -->
                 <!-- <td><p-inputNumber value = "number" mode = "decimal" [(ngModel)] = "warehouse.warehouseId"></p-inputNumber></td>
-                <td><p-inputText value = "text" [(ngModel)] = "warehouse.warehouseName"></p-inputText></td>
-                <td><p-inputText value = "text"  [(ngModel)] = "warehouse.location"></p-inputText></td>
+                <td><p-inputText [(ngModel)] = "warehouse.warehouseName"></p-inputText></td>
+                <td><p-inputText [(ngModel)] = "warehouse.location"></p-inputText></td>
                 <td><p-inputNumber value = "number" mode = "decimal" [(ngModel)] = "warehouse.capacityMax"></p-inputNumber></td>
                 <td><p-inputNumber value = "number" mode = "decimal" [(ngModel)] = "warehouse.capacityCurrent"></p-inputNumber></td>
                 <td><p-inputNumber value = "number" mode = "decimal" [(ngModel)] = "warehouse.supply"></p-inputNumber></td>
-                <td><p-inputNumber value = "number" mode = "decimal" [(ngModel)] = "warehouse.product_id"></p-inputNumber></td>
-                -->
+                <td><p-inputNumber value = "number" mode = "decimal" [(ngModel)] = "warehouse.product_id"></p-inputNumber></td> -->
+               
         </tr>
         
     </ng-template>
