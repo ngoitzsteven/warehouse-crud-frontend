@@ -16,9 +16,6 @@ export class Warehouse {
     this.supply =supply;
     this.product_id =product_id;
  }
-    
-
-
 
 }
 

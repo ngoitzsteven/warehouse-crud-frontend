@@ -11,7 +11,11 @@ import { TableModule } from 'primeng/table'
 import {SplitButtonModule} from 'primeng/splitbutton';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputNumberModule} from 'primeng/inputnumber';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { FormsModule } from '@angular/forms';
     SplitButtonModule,
     BrowserAnimationsModule,
     InputNumberModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    DynamicDialogModule,
+    DialogModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

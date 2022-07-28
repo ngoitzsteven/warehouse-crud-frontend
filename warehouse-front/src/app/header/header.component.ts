@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
     this.ProductAPIService.saveProduct(this.product).subscribe();
   }
   deleteProduct(id: number): void {
-    this.ProductAPIService.deleteProduct(id).subscribe();
+    this.ProductAPIService.deleteProductID(id).subscribe();
   }
 
 

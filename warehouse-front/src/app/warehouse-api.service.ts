@@ -26,6 +26,7 @@ export class WarehouseAPIService {
 
   deleteWarehouse(id : number) {               
       if (id) {
+        console.log(id);  
         return this.http.delete (environment.baseUrl + this.APIServer + id);
       } else {
         throw new Error("Product Error 404 not found. Cannot Delete"); 

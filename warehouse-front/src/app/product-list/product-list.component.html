@@ -1,6 +1,12 @@
-<div>
+
+<div >
     <p>Products</p>
-    <p-table [value]="products">
+    <p-table [value]="products" [rows]="10" [paginator]="true" 
+    [globalFilterFields]="['id','productName','partNumber']"
+    [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        
+
         <ng-template pTemplate="header">
             <tr>
                 <th>Product ID</th> 
@@ -14,8 +20,105 @@
             <td>{{product.id}}</td>
             <td>{{product.productName}}</td>
             <td>{{product.partNumber}}</td>
+            <!-- <td><button class="btn-blue" (click)="selectForUpdate(product)">Edit</button></td> -->
 
         </tr>
     </ng-template>
 </p-table>
 </div>
+<!-- add product -->
+<p-dialog
+  header="Add Product"
+  [(visible)]="displayProductAdd"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+>
+  <div >
+    <table>
+      <tr>
+        <label for="id">Product ID</label>
+        <input
+          type="number"
+          pInputNumber
+          [(ngModel)]="productFormData.id"
+          id="id"
+        />
+      </tr>
+      <tr>
+        <label for="productName">Product Name</label>
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="productFormData.productName"
+          placeholder="Product Name"
+        />
+      </tr>
+      <tr>
+        <label for="partNumber">Part Number</label>
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="productFormData.partNumber"
+          placeholder="partNumber"
+        />
+      </tr>
+    </table>
+  </div>
+  <ng-template pTemplate="footer">
+    <p-button
+      icon="pi pi-check"
+      (click)="addProduct()"
+      label="Submit"
+      styleClass="p-button-text"
+    ></p-button>
+    <p-button
+      icon="pi pi-times"
+      (click)="displayProductAdd = false"
+      label="Cancel"
+    ></p-button>
+  </ng-template>
+</p-dialog>
+<!-- delete product -->
+<p-dialog
+  header="Delete Product"
+  [(visible)]="displayProductDelete"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+>
+  <div>
+    <table>
+      <tr>
+        <label for="id">Product ID</label>
+        <input
+          type="number"
+          pInputNumber
+          [(ngModel)]="productFormData.id"
+          placeholder=""
+          id="id"
+        />
+      </tr>
+    </table>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      icon="pi pi-check"
+      (click)="deleteProductID(this.productFormData.id)"
+      label="Submit"
+      styleClass="p-button-text"
+    ></p-button>
+    <p-button
+      icon="pi pi-times"
+      (click)="displayProductDelete = false"
+      label="Cancel"
+    ></p-button>
+  </ng-template>
+</p-dialog>
+
+<div>
+    <div>
+      <span>
+             <p-splitButton label="Product" [model]="pItems"></p-splitButton>
+          </span> 
+    </div>
+  </div>

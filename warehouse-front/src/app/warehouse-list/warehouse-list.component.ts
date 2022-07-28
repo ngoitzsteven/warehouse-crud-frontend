@@ -1,21 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { WarehouseAPIService } from '../warehouse-api.service';
 import { Warehouse } from 'Warehouse';
-import { ProductAPIServiceService } from '../product-apiservice.service';
 import { MenuItem } from 'primeng/api';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { Product } from 'Product';
 
 @Component({
   selector: 'app-warehouse-list',
   templateUrl: './warehouse-list.component.html',
-  styleUrls: ['./warehouse-list.component.css'],
+  styleUrls: ['./warehouse-list.component.css', ],
 })
 export class WarehouseListComponent implements OnInit {
-  pItems!: MenuItem[];
   wItems!: MenuItem[];
-  product: Product = new Product();
 
+  displayWarehouseAdd: boolean = false;
+  displayWarehouseDelete: boolean = false;
   WarehouseAPIService: WarehouseAPIService;
   warehouses: Warehouse[] = [];
   warehouseFormData: Warehouse = new Warehouse();
@@ -28,28 +25,37 @@ export class WarehouseListComponent implements OnInit {
     this.WarehouseAPIService.findWarehouseList().subscribe((resp) => {
       this.warehouses = resp;
     });
-     this.wItems = [
+    this.wItems = [
       {
-        label: 'Add',
+        label: 'Add Warehouse',
         icon: 'pi pi-plus',
         command: () => {
-          this.addWarehouse();
+          this.showBasicDialogWarehouseAdd();
         },
       },
       {
-        label: 'Delete',
+        label: 'Delete Warehouse',
         icon: 'pi pi-minus-circle',
         command: () => {
-          this.deleteWarehouse(this.product.id);
+          this.showBasicDialogWarehouseDelete();
         },
       },
     ];
   }
 
   addWarehouse(): void {
+    this.displayWarehouseAdd = false;
     this.WarehouseAPIService.saveWarehouse(this.warehouseFormData).subscribe();
   }
   deleteWarehouse(id: number): void {
     this.WarehouseAPIService.deleteWarehouse(id).subscribe();
+    this.displayWarehouseDelete = false;
+  }
+  /* A function that is called when the user clicks on the "Add Warehouse" button. */
+  showBasicDialogWarehouseAdd() {
+    this.displayWarehouseAdd = true;
+  }
+  showBasicDialogWarehouseDelete() {
+    this.displayWarehouseDelete = true;
   }
 }
