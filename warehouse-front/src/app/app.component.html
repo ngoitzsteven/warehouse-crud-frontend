@@ -2,5 +2,14 @@
     Macro Center
 </header>
 <!-- <app-header></app-header> -->
-<app-warehouse-list ></app-warehouse-list>
-<app-product-list ></app-product-list>
+<div class="card">
+    <p-tabView>
+        <p-tabPanel header="Warehouse">
+            <app-warehouse-list ></app-warehouse-list>
+        </p-tabPanel>
+        <p-tabPanel header="Product">
+            <app-product-list ></app-product-list>
+        </p-tabPanel>
+    </p-tabView>
+</div>
+

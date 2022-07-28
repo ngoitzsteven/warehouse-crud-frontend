@@ -131,10 +131,7 @@
 
 <!--list of warehouses -->
 <div>
-  <p-table [value]="warehouses"   selectionMode="single" [rows]="10" [paginator]="true" 
-  [globalFilterFields]="['id','productName','partNumber']"
-  [rowHover]="true" dataKey="id" 
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+  <p-table [value]="warehouses"   selectionMode="single" [rows]="10" [paginator]="true">
     <ng-template pTemplate="header"  >
       <tr>
         <th>Warehouse Id</th>

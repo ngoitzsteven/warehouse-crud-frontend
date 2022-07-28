@@ -15,7 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-
+import { TabViewModule } from 'primeng/tabview';
+import {ToastModule} from 'primeng/toast';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,12 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     DynamicDialogModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    TabViewModule,
+    ToastModule,
+    
   ],
-  providers: [],
+  providers: [ConfirmationService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

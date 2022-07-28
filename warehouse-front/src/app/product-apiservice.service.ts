@@ -8,9 +8,7 @@ import { Product } from 'Product';
   providedIn: 'root',
 })
 export class ProductAPIServiceService {
-  getProductsSmall() {
-    throw new Error('Method not implemented.');
-  }
+
   APIServer = `product/`;
   constructor(private http: HttpClient) {
     this.http = http;
@@ -25,22 +23,22 @@ export class ProductAPIServiceService {
     return this.http.post(this.APIServer, product);
   }
 
-  public deleteProductID(id: number) {
+  public deleteProduct(id: number): Observable<any>{
     console.log('delete product id' + id);
     if (id) {
-      console.log('delete product id if' + id);
-      return this.http.delete(environment.baseUrl + this.APIServer + id);
+      console.log(id);  
+      return this.http.delete (environment.baseUrl + this.APIServer + id);
     } else {
       throw new Error('Product Error 404 not found. Cannot Delete');
     }
   }
-  deleteProductName(id: String) {
-    if (id) {
-      return this.http.delete(environment.baseUrl + this.APIServer + id);
-    } else {
-      throw new Error('Product Error 404 not found. Cannot Delete');
-    }
-  }
+  // deleteProductName(id: String) {
+  //   if (id) {
+  //     return this.http.delete(environment.baseUrl + this.APIServer + id);
+  //   } else {
+  //     throw new Error('Product Error 404 not found. Cannot Delete');
+  //   }
+  // }
 
   updateProduct(update: Product): Observable<any> {
     if (update) {

@@ -1,5 +1,5 @@
-
-<div >
+<p-toast></p-toast>
+<!-- <div >
     <p>Products</p>
     <p-table [value]="products" [rows]="10" [paginator]="true" 
     [globalFilterFields]="['id','productName','partNumber']"
@@ -20,12 +20,12 @@
             <td>{{product.id}}</td>
             <td>{{product.productName}}</td>
             <td>{{product.partNumber}}</td>
-            <!-- <td><button class="btn-blue" (click)="selectForUpdate(product)">Edit</button></td> -->
+             <td><button class="btn-blue" (click)="selectForUpdate(product)">Edit</button></td> 
 
         </tr>
     </ng-template>
 </p-table>
-</div>
+</div> -->
 <!-- add product -->
 <p-dialog
   header="Add Product"
@@ -103,7 +103,7 @@
   <ng-template pTemplate="footer">
     <p-button
       icon="pi pi-check"
-      (click)="deleteProductID(this.productFormData.id)"
+      (click)="deleteProduct(this.productFormData.id)"
       label="Submit"
       styleClass="p-button-text"
     ></p-button>
@@ -115,10 +115,68 @@
   </ng-template>
 </p-dialog>
 
-<div>
+
+<div class="card">
+      <p-table [value]="products" dataKey="id" editMode="row"[rows]="10" [paginator]="true" 
+      [globalFilterFields]="['id','productName','partNumber']"
+      [rowHover]="true" dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+          <ng-template pTemplate="header">
+              <tr>
+                <th>Product ID</th> 
+                <th>Product Name</th> 
+                <th>Part Number</th>
+                <th><p-splitButton label="Product" [model]="pItems"></p-splitButton></th>
+
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product let-editing="editing" let-ri="rowIndex" >
+              <tr [pEditableRow]="product">
+                  <td pEditableColumn>
+                      <p-cellEditor>
+                          <ng-template pTemplate="input">
+                              <input pInputText type="number" [(ngModel)]="product.code">
+                          </ng-template>
+                          <ng-template pTemplate="output">
+                            {{product.id}}
+                          </ng-template>
+                      </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                      <p-cellEditor>
+                          <ng-template pTemplate="input">
+                              <input pInputText type="text" [(ngModel)]="product.productName" required>
+                          </ng-template>
+                          <ng-template pTemplate="output">
+                            {{product.productName}}
+                          </ng-template>
+                      </p-cellEditor>
+                  </td>
+                  <td pEditableColumn>
+                      <p-cellEditor>
+                          <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="product.partNumber" required>
+                          </ng-template>
+                          <ng-template pTemplate="output">
+                            {{product.partNumber}}
+                          </ng-template>
+                      </p-cellEditor>
+                  </td>
+                  <td style="text-align:center">
+                      <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(product)" class="p-button-rounded p-button-text"></button>
+                      <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(product)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                      <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(product, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                  </td>
+              </tr>
+          </ng-template>
+      </p-table>
+  </div>
+
+
+<!-- <div>
     <div>
       <span>
              <p-splitButton label="Product" [model]="pItems"></p-splitButton>
           </span> 
     </div>
-  </div>
+  </div> -->

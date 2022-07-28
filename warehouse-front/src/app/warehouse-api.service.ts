@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs'
 import { Warehouse } from 'Warehouse';
-
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +28,7 @@ export class WarehouseAPIService {
         console.log(id);  
         return this.http.delete (environment.baseUrl + this.APIServer + id);
       } else {
-        throw new Error("Product Error 404 not found. Cannot Delete"); 
+        throw new Error("Warehouse Error 404 not found. Cannot Delete"); 
       }
     }
   }
